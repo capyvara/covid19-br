@@ -6,6 +6,7 @@
 *.sw?
 *~
 .*.sw?
+.scrapy
 .DS_Store
 .activate
 .coverage

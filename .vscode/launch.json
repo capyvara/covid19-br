@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Convert",
+            "type": "python",
+            "request": "launch",
+            "program": "obitos_registral_cities_convert.py",
+            "console": "integratedTerminal",
+            "args": [
+                "./data/download/obitos_registral_cidades.csv",
+                "./data/output/obito_cartorio_registral_cidades.csv.gz",
+            ],
+        },
+        {
+            "name": "Scrapy",
+            "type": "python",
+            "request": "launch",
+            "module": "scrapy",
+            "cwd": "${workspaceRoot}",
+            "args": [
+                "runspider",
+                "obitos_registral_cities_spider.py",
+                "-s",
+                "HTTPCACHE_ENABLED=True",
+                "-s",
+                "HTTPCACHE_ALWAYS_STORE=True",
+                "--loglevel=DEBUG",
+                "-o",
+                "./data/download/obitos_registral_cidades.csv"
+            ],
+            "console": "integratedTerminal"
+        }
+    ]
+}
