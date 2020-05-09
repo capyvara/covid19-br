@@ -6,6 +6,9 @@ from epiweeks import Week, Year
 import scrapy
 
 import date_utils
+import rows
+
+cities = rows.import_from_csv("data/populacao-estimada-2019.csv")
 
 class DeathsSpider(scrapy.Spider):
     name = "obitos_registral_cities"
@@ -18,7 +21,7 @@ class DeathsSpider(scrapy.Spider):
         "respiratory_failure": "INSUFICIENCIA_RESPIRATORIA",
         "septicemia": "SEPTICEMIA",
         "indeterminate": "INDETERMINADA",
-        "others": "OUTRAS"
+        "others": "OUTRAS",
     }
 
     def make_cities_request(
@@ -76,7 +79,7 @@ class DeathsSpider(scrapy.Spider):
         # so we'll exploit that to extract the data only from the "2020" chart
 
         for city in cities:
-            for year in [2020, 2019]:
+            for year in [2020, 2019, 2018]:
                 for weeknum in range(1, current_week.week):
                     ep_week = Week(year, weeknum)
 
